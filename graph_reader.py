@@ -1,12 +1,12 @@
-from networkx import DiGraph
+from networkx import DiGraph, Graph, read_edgelist
 from networkx import Graph
+import numpy as np
 
-def read_graph(filename):
-    G = DiGraph()
-    with open(filename) as f:
-        for line in f:
-            tokens = line.split()
-            if tokens[0] not in G.nodes():
-                G.add_node(int(tokens[0]))
-            G.add_edge(int(tokens[0]),int(tokens[1]))
+def read_graph(filename, isdirected):
+    print("------------------Reading Graph--------------------")
+    if (isdirected):
+        G = read_edgelist(filename,create_using=DiGraph())
+    else:
+        G = read_edgelist(filename)  
+    print("------------------Reading Completed-----------------")
     return G
