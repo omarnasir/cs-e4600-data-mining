@@ -11,6 +11,17 @@ class task_1:
     def getdistance(self, node):
         return single_source_shortest_path_length(self.graph, node)
 
+    def getdistancesumcount(self, node):
+        sum_tmp = 0
+        count = 0
+        distance_node = single_source_shortest_path_length(self.graph, node)
+        distance = np.array(list(distance_node.values()))
+        sum_tmp += sum(distance)
+        count += len(distance)
+        # print(sum_tmp)
+        return [sum_tmp, count]
+
+
     def median(self):
         pool = mp.Pool(processes=5)
         results = pool.map(self.getdistance, self.graph.nodes())
@@ -25,15 +36,18 @@ class task_1:
 
     def mean(self):
         pool = mp.Pool(processes=5)
-        results = pool.map(self.getdistance, self.graph.nodes())
-        output = [list(res.values()) for res in results]
+        results = pool.map(self.getdistancesumcount, self.graph.nodes())
+        output = [res for res in results]
         pool.close()
         pool.join()
+        sum_all= np.sum(output, axis=0)
+        print(sum_all[0])
+        d_mean = sum_all[0] / sum_all[1]
         # distance = []
         # for node in self.graph.nodes():
         #     distance_node = single_source_shortest_path_length(self.graph, node)
         #     distance.extend(np.array(list(distance_node.values())))
-        return np.mean(output)
+        return d_mean
 
     def diameter(self):
         d = 0
@@ -62,7 +76,7 @@ class task_1:
             print("----------" + statistic + "----------")
             start = time.perf_counter()
             function = statistics_func[index]
-            value = function()
+            value = self.mean()
             elapsed = time.perf_counter() - start
             print('Value: ' + str(value))
             print('Elapsed Time: %.3f seconds.' % elapsed)
