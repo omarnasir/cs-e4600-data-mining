@@ -28,7 +28,7 @@ def lscc_lwcc_generator():
 
 def main():
     print("----------Reading Connected Component SubGraph")
-    wiki_Vote = read_gpickle('D:/Project/outputs/wiki-Vote_LSCC.txt')
+    wiki_Vote = read_gpickle('D:/Project/outputs/wiki-Vote_LWCC.txt')
     # soc_Epinions1 = read_gpickle('D:/Project/outputs/soc-Epinions1_LSCC.txt')
     print("----------Done")
     print("----------Computing Statistics")

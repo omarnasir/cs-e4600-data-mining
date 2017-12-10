@@ -24,11 +24,16 @@ class task_1:
         return np.median(output)
 
     def mean(self):
-        distance = []
-        for node in self.graph.nodes():
-            distance_node = single_source_shortest_path_length(self.graph, node)
-            distance.extend(np.array(list(distance_node.values())))
-        return np.mean(distance)
+        pool = mp.Pool(processes=5)
+        results = pool.map(self.getdistance, self.graph.nodes())
+        output = [list(res.values()) for res in results]
+        pool.close()
+        pool.join()
+        # distance = []
+        # for node in self.graph.nodes():
+        #     distance_node = single_source_shortest_path_length(self.graph, node)
+        #     distance.extend(np.array(list(distance_node.values())))
+        return np.mean(output)
 
     def diameter(self):
         d = 0
