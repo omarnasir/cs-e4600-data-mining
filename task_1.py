@@ -13,8 +13,10 @@ class task_1:
 
     def median(self):
         pool = mp.Pool(processes=5)
-        results = [pool.map(self.getdistance, node) for node in self.graph.nodes()]
-        output = [list(p.get().values()) for p in results]
+        results = pool.map(self.getdistance, self.graph.nodes())
+        output = [list(res.values()) for res in results]
+        pool.close()
+        pool.join()
         # distance = []
         # for node in graph.nodes():
         #     distance_node = single_source_shortest_path_length(graph, node)
@@ -48,7 +50,7 @@ class task_1:
         eff_d_sorted = np.sort(eff_d)
         return eff_d_sorted[int(np.floor(len(eff_d_sorted)*0.9))]
 
-    def task_1(self):
+    def main(self):
         statistics = ['Median', 'Mean', 'Diameter', 'Effective_diameter']
         statistics_func = [self.median, self.mean, self.diameter, self.effective_diameter]
         for index, statistic in enumerate(statistics):

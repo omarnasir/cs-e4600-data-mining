@@ -34,7 +34,7 @@ def main():
     print("----------Computing Statistics")
     obj = task_1.task_1()
     obj.graph = wiki_Vote
-    obj.task_1()
+    obj.main()
     # task_1(soc_Epinions1)
 
 if __name__ == "__main__":
