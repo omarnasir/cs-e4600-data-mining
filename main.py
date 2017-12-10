@@ -2,7 +2,7 @@ from networkx import write_gpickle, read_gpickle
 from networkx import all_pairs_shortest_path_length, single_source_shortest_path_length
 from graph_reader import read_graph
 from task_0 import task_0
-from task_1 import task_1 
+import task_1 
 import numpy as np
 import time
 
@@ -28,11 +28,13 @@ def lscc_lwcc_generator():
 
 def main():
     print("----------Reading Connected Component SubGraph")
-    wiki_Vote = read_gpickle('D:/Project/outputs/wiki-Vote_LWCC.txt')
+    wiki_Vote = read_gpickle('D:/Project/outputs/wiki-Vote_LSCC.txt')
     # soc_Epinions1 = read_gpickle('D:/Project/outputs/soc-Epinions1_LSCC.txt')
     print("----------Done")
     print("----------Computing Statistics")
-    task_1(wiki_Vote)
+    obj = task_1.task_1()
+    obj.graph = wiki_Vote
+    obj.task_1()
     # task_1(soc_Epinions1)
 
 if __name__ == "__main__":
