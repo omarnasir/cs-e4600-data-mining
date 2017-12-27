@@ -21,12 +21,12 @@ class task_0:
 
     def lscc_lwcc_generator(self):
         directed = False
-        filenames = ['soc-Pokec']
+        filenames = ['soc-Epinions1', 'soc-Pokec']
         # filenames = ['wiki-Vote', 'soc-Epinions1', 'soc-Pokec', 'ego-Gplus']
         for file_obj in filenames:
             ### Local computing
-            self.read_graph('D:/Project/data/' + file_obj + '.txt', directed)
-            # self.read_graph('C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/data/' + file_obj + '.txt', directed
+            # self.read_graph('D:/Project/data/' + file_obj + '.txt', directed)
+            self.read_graph('C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/data/' + file_obj + '.txt', directed)
             ### For Aalto Notebooks
             # self.read_graph('./data/' + file_obj + '.txt', directed)
             info = self.task_0(directed)
@@ -36,11 +36,11 @@ class task_0:
                 ext = '_LWCC.txt'
             print("------------------Graph Summary--------------------")
             print("Graph Name: " + file_obj)
-            print("Edges/Vertices: " + info)
+            print("Edges/Vertices: " + info.split("-- ")[1])
             print("------------------Writing LCCs to Disk--------------------")
             ### Local computing
-            self.SCC_largest.write_graphmlz(f='D:/Project/outputs_igraph/'+ file_obj + ext)
-            # self.SCC_largest.write_graphmlz(f='C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/outputs/'+ file_obj + ext)
+            # self.SCC_largest.write_graphmlz(f='D:/Project/outputs_igraph/'+ file_obj + ext)
+            self.SCC_largest.write_graphmlz(f='C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/outputs/'+ file_obj + ext)
             ### For Aalto Notebooks
             # self.SCC_largest.write_graphmlz(f='./outputs/'+ file_obj + ext)
             print("------------------Completed-----------------")
