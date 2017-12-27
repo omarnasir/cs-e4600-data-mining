@@ -34,7 +34,7 @@ class task_0:
                 ext = '_LWCC.txt'
             print("------------------Graph Summary--------------------")
             print("Graph Name: " + file_obj)
-            print("Edges/Vertices: " + info)
+            print("Edges/Vertices: " + info.split("-- ")[1])
             print("------------------Writing LCCs to Disk--------------------")
             ### Local computing
             self.scc_largest.write_graphmlz(f='D:/Project/outputs_igraph/'+ file_obj + ext)
