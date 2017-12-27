@@ -20,7 +20,7 @@ class task_0:
         return self.SCC_largest.summary()
 
     def lscc_lwcc_generator(self):
-        directed = True
+        directed = False
         filenames = ['soc-Pokec']
         # filenames = ['wiki-Vote', 'soc-Epinions1', 'soc-Pokec', 'ego-Gplus']
         for file_obj in filenames:
@@ -40,9 +40,9 @@ class task_0:
             print("------------------Writing LCCs to Disk--------------------")
             ### Local computing
             self.SCC_largest.write_graphmlz(f='D:/Project/outputs_igraph/'+ file_obj + ext)
-            # self.graph.induced_subgraph(self.SCC_largest).write_pickle(fname='C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/outputs/'+ file_obj + ext)
+            # self.SCC_largest.write_graphmlz(f='C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/outputs/'+ file_obj + ext)
             ### For Aalto Notebooks
-            # self.graph.induced_subgraph(self.SCC_largest).write_pickle(fname='./outputs/'+ file_obj + ext)
+            # self.SCC_largest.write_graphmlz(f='./outputs/'+ file_obj + ext)
             print("------------------Completed-----------------")
             print("Iteration finished")
 
