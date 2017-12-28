@@ -6,6 +6,7 @@ import time
 def main():
     filenames = ['wiki-Vote']
     # filenames = ['wiki-Vote', 'soc-Epinions1', 'soc-Pokec', 'ego-Gplus']
+    # ext = [['_LWCC.txt','Weakly Connected Component']]
     ext = [['_LSCC.txt','Strongly Connected Component'],['_LWCC.txt','Weakly Connected Component']]
     for fileobj in filenames:
         print("######################################################")
