@@ -23,6 +23,9 @@ class task_2:
     
     def setSamples(self, num):
         self.num_samples = num
+
+    def setIterations(self, num):
+        self.num_iterations = num
     
 
     ### Sample random pairs algorithm implementation
@@ -105,7 +108,7 @@ class task_2:
         statistics = ['Median']
         statistics = ['Median', 'Mean', 'Diameter', 'Effective_diameter']        
         statistics_func = [self.median, self.mean, self.diameter, self.effective_diameter]
-        samples = range(100, 1000, 100)
+        samples = range(10, 100, 10)
         for index, statistic in enumerate(statistics):
             stat = []
             
@@ -115,7 +118,7 @@ class task_2:
                 tmp = []
                 function = statistics_func[index]
                 for sample in samples:
-                    self.setSamples(sample)
+                    self.setIterations(sample)
                     tmp.append(function(algorithms_func[i]))
                 stat.append(tmp)
             plt.figure()
