@@ -16,33 +16,29 @@ class task_0:
         return self.scc_largest.summary()
 
     def lscc_lwcc_generator(self):
-        directed = False # Set to True for directed graphs
+        directed = False # Set to True/False for directed/undirected graphs
         filenames = ['wiki-Vote', 'soc-Epinions1', 'soc-Pokec', 'ego-Gplus']
         
         for file_obj in filenames:
             print("------------------Reading Graph From Disk--------------------")
-            ### Local computing
-            # self.graph = Graph.Read_Ncol('D:/Project/data/' + file_obj + '.txt', directed=directed) 
-            # self.graph = Graph.Read_Ncol('C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/data/' + file_obj + '.txt',directed=directed)
-            
             self.graph = Graph.Read_Ncol('./data/' + file_obj + '.txt', directed=directed)
             print("------------------Reading Completed-----------------")
+
+            # Compute Connected components
             info = self.task_0(directed)
+            
             if(directed):
-                ext = '_LSCC.txt'
+                ext = '_LSCC.gz'
             else:
-                ext = '_LWCC.txt'
+                ext = '_LWCC.gz'
+            
             print("------------------Graph Summary--------------------")
             print("Graph Name: " + file_obj)
             print("Edges/Vertices: " + info.split("-- ")[1])
-            print("------------------Writing LCCs to Disk--------------------")
-            ### Local computing
-            # self.scc_largest.write_graphmlz(f='D:/Project/outputs_igraph/'+ file_obj + ext)
-            # self.scc_largest.write_graphmlz(f='C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/outputs/'+ file_obj + ext)
             
+            print("------------------Writing LCCs to Disk--------------------")
             self.scc_largest.write_graphmlz(f='./outputs/'+ file_obj + ext)
             print("------------------Completed-----------------")
-            print("Iteration finished")
 
 def main():
     obj = task_0()

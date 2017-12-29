@@ -2,7 +2,6 @@ from igraph import *
 import numpy as np
 import time
 import random
-import pandas as pd
 
 class task_2:
     graph = None
@@ -36,16 +35,7 @@ class task_2:
 
         return distances
 
-
-    ### Sample random sources algorithm implementation
-    def random_sources(self, iteration):
-        random.seed(2018 + 100*iteration)
-        sources = random.sample(range(self.LSCC_vsizes[0]-1), k=self.num_samples)
-        random.shuffle(sources)
-        distances = self.graph.shortest_paths(sources)
-        return distances
-
-    def bitmask(self,size):
+    def generate_bitmask(self,size):
         mask = ''
         for i in range(0,size):
             mask = mask + str(np.random.binomial(1, 0.5 ** (i + 1)))
@@ -62,43 +52,50 @@ class task_2:
         return sum / len(masks)
 
     ### Sample random sources algorithm implementation
-    def anf(self, iteration):
+    def random_sources(self, iteration):
+        random.seed(2018 + 100*iteration)
+        sources = random.sample(range(self.LSCC_vsizes[0]-1), k=self.num_samples)
+        random.shuffle(sources)
+        distances = self.graph.shortest_paths(sources)
+        return distances
+
+    ### ANF algorithm implementation
+    def anf(self):
         ### Define:
         # k = number of bitmasks; n = length of 1 bitmask; h = iteration parameter
-        k = 3
+        k = 5
         n = math.ceil(math.log2(len(self.nodes)))
         
         # Define array of M dictionaries to hold values of each iteration, h
-        M = [dict() for i in range(iteration)]
+        M = [dict() for i in range(2)]
         
         # Define array of IN^ estimates for each iteration, h
-        IN = [[] for i in range(iteration)]
+        IN = [[] for i in range(2)]
 
         # Generate K bitmasks of length n each
         # Set 1 bit randomly using exponential distribution
         for node in self.nodes:
             mask = ''
             for i in range(0,k):
-                mask = mask + self.bitmask(n)
+                mask = mask + self.generate_bitmask(n)
             M[0][node] = int(mask, base=2)
         
+        iteration = 0
         N = []
-        for h in range(1,iteration):
-            M[h] = M[h - 1].copy()
+        while (True):
+            i = iteration % 2
+            M[1] = M[0].copy()
             for edge in self.graph.get_edgelist():
                 # Do Bitwise OR
-                M[h][edge[0]] = M[h][edge[0]] | M[h-1][edge[1]]
+                M[1][edge[0]] = M[1][edge[0]] | M[0][edge[1]]
             for node in self.nodes:
-                IN[h-1].append((2 ** self.compute_b(M[h][node],n)) / .77351)
-            # if max(IN[h-1]) > 0.5 * len(self.nodes):
-            #     print("Median: " + str(h))       
-            # if max(IN[h-1]) > 0.9 * len(self.nodes):
-            #     print("Effective Diameter: " + str(h))
-            #     return
-            # if max(IN[h-1]) > len(self.nodes):
-            #     print("Diameter: " + str(h))   
-            if IN[h-1] == IN[h-2]:
-                return h
+                IN[i].append((2 ** self.compute_b(M[1][node],n)) / .77351)
+            # Stop Criterion
+            if IN[1] == IN[0]:
+                return iteration
+            M[0] = M[1].copy()
+            iteration += 1
+            IN[iteration % 2] = []
         return False
 
     def median(self, function):
@@ -154,11 +151,11 @@ def main():
     # graph.add_edges([[0,1],[1,2],[2,3],[3,4],[4,1]])
     obj = task_2()
     # obj.graph = graph    
-    obj.graph = Graph.Read_GraphMLz('D:/Project/outputs_igraph/ego-Gplus_LSCC.txt', directed = True)
+    obj.graph = Graph.Read_GraphMLz('D:/Project/outputs_igraph/wiki-vote_LSCC.txt', directed = True)
     obj.nodes = obj.graph.vs.indices
     # obj.graph = Graph.Read_GraphMLz('C:/Users/Pc Laura/Desktop/Data_Mining/Project/cs-e4600-data-mining/outputs/wiki-Vote_LWCC.txt')
     start = time.perf_counter()
-    value = obj.anf(99999)
+    value = obj.anf()
     elapsed = time.perf_counter() - start
     print('Value: ' + str(value))
     print('Elapsed Time: %.3f seconds.' % elapsed)
