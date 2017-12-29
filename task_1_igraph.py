@@ -4,25 +4,22 @@ import time
 import multiprocessing as mp
 import concurrent.futures
 from memory_profiler import profile
+import pandas as pd
 
 class task_1:
-    NUM_PROCESS = 2
+    NUM_PROCESS = 4
     graph = None
     nodes = []
 
     ### Utility functions for each exact statistic
     ### Called by each Parallelization process
     def getdistance(self, node):
-        return np.sort(self.graph.shortest_paths(source=node)[0])
+        return self.graph.shortest_paths(source=node)[0]
 
     def getdistancesumcount(self, node):
-        sum_tmp = 0
-        count = 0
         distance_node = self.graph.shortest_paths(source=node)[0]
         distance = np.array(distance_node)
-        sum_tmp += sum(distance)
-        count += len(distance)
-        return [sum_tmp, count]
+        return sum(distance) / len(distance)
 
     def getshortestpaths(self, node):
         min_paths = self.graph.shortest_paths(source=node)[0]
@@ -33,7 +30,7 @@ class task_1:
 
     ### Exact Statistics Function Definitions
     ### Spawn NUM_PROCESS processes and execute a Process Pool
-    @profile
+    # @profile
     def median(self):
         pool = mp.Pool(processes=self.NUM_PROCESS)
         results = pool.map(self.getdistance, self.nodes)
@@ -41,17 +38,16 @@ class task_1:
         pool.join()
         return np.median(results, overwrite_input = True)
     
-    @profile
+    # @profile
     def mean(self):
         pool = mp.Pool(processes=self.NUM_PROCESS)
         results = pool.map(self.getdistancesumcount, self.nodes)
         pool.close()
         pool.join()
-        sum_all= np.sum(results, axis=0)
-        d_mean = sum_all[0] / sum_all[1]
+        d_mean = np.sum(results) / len(results)
         return d_mean
 
-    @profile
+    # @profile
     def diameter(self):
         pool = mp.Pool(processes=self.NUM_PROCESS)
         results = pool.map(self.getshortestpaths, self.nodes)
@@ -59,7 +55,7 @@ class task_1:
         pool.join()
         return max(np.array(results))         
 
-    @profile
+    # @profile
     def effective_diameter(self):
         pool = mp.Pool(processes=self.NUM_PROCESS)
         results = pool.map(self.geteccentricity, self.nodes)
@@ -68,11 +64,11 @@ class task_1:
         eff_d_sorted = np.sort(results)
         return eff_d_sorted[int(np.floor(len(eff_d_sorted)*0.9))]
 
-    @profile
+    # @profile
     def main(self):
         self.nodes = self.graph.vs.indices
-        statistics = ['Median', 'Mean', 'Diameter', 'Effective_diameter']
-        statistics_func = [self.median, self.mean, self.diameter, self.effective_diameter]
+        statistics = ['Mean', 'Diameter', 'Effective_diameter', 'Median']
+        statistics_func = [self.mean, self.diameter, self.effective_diameter, self.median]
         for index, statistic in enumerate(statistics):
             print(" ")
             print(statistic)
