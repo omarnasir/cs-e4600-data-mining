@@ -1,0 +1,343 @@
+######################################################
+
+Reading Subgraph from Disk: wiki-Vote
+
+######################################################
+
+--------- Type: Strongly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 0.016 seconds.
+
+Mean
+-> Value: 2.89473684211
+-> Elapsed Time: 0.013 seconds.
+
+Diameter
+-> Value: 5
+-> Elapsed Time: 0.009 seconds.
+
+Effective diamater
+-> Value: 5
+-> Elapsed Time: 0.013 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 0.006 seconds.
+
+Mean
+-> Value: 2.85103846154
+-> Elapsed Time: 0.005 seconds.
+
+Diameter
+-> Value: 6
+-> Elapsed Time: 0.005 seconds.
+
+Effective diamater
+-> Value: 5
+-> Elapsed Time: 0.005 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 8
+-> Elapsed Time: 0.397 seconds.
+
+--------- Type: Weakly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 0.080 seconds.
+
+Mean
+-> Value: 3.15789473684
+-> Elapsed Time: 0.075 seconds.
+
+Diameter
+-> Value: 5
+-> Elapsed Time: 0.076 seconds.
+
+Effective diamater
+-> Value: 5
+-> Elapsed Time: 0.073 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 0.035 seconds.
+
+Mean
+-> Value: 3.09298754599
+-> Elapsed Time: 0.036 seconds.
+
+Diameter
+-> Value: 6
+-> Elapsed Time: 0.038 seconds.
+
+Effective diamater
+-> Value: 6
+-> Elapsed Time: 0.033 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 8
+-> Elapsed Time: 1.783 seconds.
+
+######################################################
+
+Reading Subgraph from Disk: soc-Epinions1
+
+######################################################
+
+--------- Type: Strongly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 4.0
+-> Elapsed Time: 0.189 seconds.
+
+Mean
+-> Value: 3.84210526316
+-> Elapsed Time: 0.187 seconds.
+
+Diameter
+-> Value: 6
+-> Elapsed Time: 0.186 seconds.
+
+Effective diamater
+-> Value: 6
+-> Elapsed Time: 0.187 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 4.0
+-> Elapsed Time: 0.131 seconds.
+
+Mean
+-> Value: 4.34111349036
+-> Elapsed Time: 0.123 seconds.
+
+Diameter
+-> Value: 12
+-> Elapsed Time: 0.124 seconds.
+
+Effective diamater
+-> Value: 12
+-> Elapsed Time: 0.125 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 12
+-> Elapsed Time: 9.826 seconds.
+
+--------- Type: Weakly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 5.0
+-> Elapsed Time: 0.570 seconds.
+
+Mean
+-> Value: 4.36842105263
+-> Elapsed Time: 0.559 seconds.
+
+Diameter
+-> Value: 6
+-> Elapsed Time: 0.534 seconds.
+
+Effective diamater
+-> Value: 6
+-> Elapsed Time: 0.536 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 4.0
+-> Elapsed Time: 0.308 seconds.
+
+Mean
+-> Value: 3.93198400042
+-> Elapsed Time: 0.299 seconds.
+
+Diameter
+-> Value: 10
+-> Elapsed Time: 0.301 seconds.
+
+Effective diamater
+-> Value: 10
+-> Elapsed Time: 0.299 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 13
+-> Elapsed Time: 21.395 seconds.
+
+######################################################
+
+Reading Subgraph from Disk: soc-Pokec
+
+######################################################
+
+--------- Type: Strongly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 5.0
+-> Elapsed Time: 15.500 seconds.
+
+Mean
+-> Value: 5.05263157895
+-> Elapsed Time: 15.739 seconds.
+
+Diameter
+-> Value: 7
+-> Elapsed Time: 15.340 seconds.
+
+Effective diamater
+-> Value: 7
+-> Elapsed Time: 17.982 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 5.0
+-> Elapsed Time: 12.798 seconds.
+
+Mean
+-> Value: 4.90636294716
+-> Elapsed Time: 13.391 seconds.
+
+Diameter
+-> Value: 12
+-> Elapsed Time: 14.206 seconds.
+
+Effective diamater
+-> Value: 12
+-> Elapsed Time: 12.596 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 11
+-> Elapsed Time: 1062.055 seconds.
+
+--------- Type: Weakly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 5.0
+-> Elapsed Time: 38.016 seconds.
+
+Mean
+-> Value: 4.57894736842
+-> Elapsed Time: 38.895 seconds.
+
+Diameter
+-> Value: 6
+-> Elapsed Time: 39.710 seconds.
+
+Effective diamater
+-> Value: 6
+-> Elapsed Time: 39.055 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 5.0
+-> Elapsed Time: 23.660 seconds.
+
+Mean
+-> Value: 4.788931549
+-> Elapsed Time: 21.299 seconds.
+
+Diameter
+-> Value: 10
+-> Elapsed Time: 21.459 seconds.
+
+Effective diamater
+-> Value: 10
+-> Elapsed Time: 21.087 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 35
+-> Elapsed Time: 2717.586 seconds.
+
+######################################################
+
+Reading Subgraph from Disk: ego-Gplus
+
+######################################################
+
+--------- Type: Strongly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 3.161 seconds.
+
+Mean
+-> Value: 3.31578947368
+-> Elapsed Time: 3.072 seconds.
+
+Diameter
+-> Value: 5
+-> Elapsed Time: 3.132 seconds.
+
+Effective diamater
+-> Value: 5
+-> Elapsed Time: 3.149 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 0.853 seconds.
+
+Mean
+-> Value: 3.14776549978
+-> Elapsed Time: 0.836 seconds.
+
+Diameter
+-> Value: 9
+-> Elapsed Time: 0.840 seconds.
+
+Effective diamater
+-> Value: 8
+-> Elapsed Time: 0.817 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 9
+-> Elapsed Time: 74.506 seconds.
+
+--------- Type: Weakly Connected Component ---------
+--------------------Sample_random_pairs--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 10.471 seconds.
+
+Mean
+-> Value: 2.68421052632
+-> Elapsed Time: 10.338 seconds.
+
+Diameter
+-> Value: 4
+-> Elapsed Time: 11.186 seconds.
+
+Effective diamater
+-> Value: 4
+-> Elapsed Time: 11.378 seconds.
+
+--------------------Sample_random_sources--------------------
+Median
+-> Value: 3.0
+-> Elapsed Time: 2.831 seconds.
+
+Mean
+-> Value: 2.82508409686
+-> Elapsed Time: 3.442 seconds.
+
+Diameter
+-> Value: 5
+-> Elapsed Time: 2.558 seconds.
+
+Effective diamater
+-> Value: 5
+-> Elapsed Time: 3.767 seconds.
+
+--------------------ANF Basic--------------------
+Diameter
+-> Value: 16
+-> Elapsed Time: 210.501 seconds.

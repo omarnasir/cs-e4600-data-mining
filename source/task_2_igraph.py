@@ -9,29 +9,25 @@ class task_2:
     graph = None
     nodes = []
 
-    num_samples = 100
-    num_iterations = 5
-    k = 32
+    num_samples = 20
+    k = 4
 
     def setSamples(self, num):
         self.num_samples = num
 
-    def setIterations(self, num):
-        self.num_iterations = num
-
     ### Sample random pairs algorithm implementation
-    def random_pairs(self, iteration):
+    def random_pairs(self):
         v_x = []
         v_y = []
         distances = []
 
         # Generate a list of random vertices indexes as origins x
-        random.seed(2017 + 300*iteration)
+        random.seed(2017)
         v_x = random.sample(range(len(self.nodes)), k=self.num_samples)
         random.shuffle(v_x)
 
         # Generate a list of random vertices indexes as destinations y
-        random.seed(2018 + 100*iteration)        
+        random.seed(2018)        
         v_y = random.sample(range(len(self.nodes)), k=self.num_samples)       
         random.shuffle(v_y)
 
@@ -41,8 +37,8 @@ class task_2:
         return distances
 
     ### Sample random sources algorithm implementation
-    def random_sources(self, iteration):
-        random.seed(2018 + 100*iteration)
+    def random_sources(self):
+        random.seed(1234)
         sources = random.sample(range(len(self.nodes)), k=self.num_samples)
         random.shuffle(sources)
         distances = self.graph.shortest_paths(sources)
@@ -88,32 +84,17 @@ class task_2:
         return False
 
     def median(self, function):
-        medians = []
-        for i in range(self.num_iterations):
-            med = np.median(function(i))
-            medians.append(med)
-        return np.mean(medians)
+        return np.median(function())
 
     def mean(self, function):
-        means = []
-        for i in range(self.num_iterations):
-            mean = np.mean(function(i))
-            means.append(mean)
-        return np.mean(means)
+        return np.mean(function())
 
     def diameter(self, function):
-        diameters = []
-        for i in range(self.num_iterations):
-            diameter = np.max(function(i))
-            diameters.append(diameter)
-        return max(diameters)
+        return np.max(function())
 
     def effective_diameter(self, function):
-        eff_diameters = []
-        for i in range(self.num_iterations):
-            d_sorted = np.sort(np.amax(function(i), axis=1))
-            eff_diameters.append(d_sorted[int(np.floor(self.num_samples*0.9))])
-        return mean(eff_diameters)
+        d_sorted = np.sort(np.amax(function(), axis=1))
+        return d_sorted[int(np.floor(self.num_samples*0.9))]
 
     def task_2_1(self):
         self.nodes = self.graph.vs.indices
@@ -125,21 +106,21 @@ class task_2:
         for i, algorithm in enumerate(algorithms):
             print("--------------------" + algorithm + "--------------------") 
             for index, statistic in enumerate(statistics):
-                print("----------" + statistic + "----------")
+                print(" ")
+                print(statistic)
                 start = time.perf_counter()
                 function = statistics_func[index]
                 value = function(algorithms_func[i])
                 elapsed = time.perf_counter() - start
-                print('Value: ' + str(value))
-                print('Elapsed Time: %.3f seconds.' % elapsed)
-        
+                print('-> Value: ' + str(value))
+                print('-> Elapsed Time: %.3f seconds.' % elapsed)
         print("--------------------ANF Basic--------------------") 
-        print("----------diameter----------")
+        print("Approximate Diameter")
         start = time.perf_counter()
         value = self.anf()
         elapsed = time.perf_counter() - start
-        print('Value: ' + str(value))
-        print('Elapsed Time: %.3f seconds.' % elapsed)
+        print('-> Value: ' + str(value))
+        print('-> Elapsed Time: %.3f seconds.' % elapsed)
 
     def task_2_2(self):
         self.nodes = self.graph.vs.indices
@@ -148,7 +129,7 @@ class task_2:
 
         statistics = ['Median', 'Mean', 'Diameter', 'Effective_diameter']
         statistics_func = [self.median, self.mean, self.diameter, self.effective_diameter]
-        samples = range(10, 100, 10)
+        samples = range(1, 10, 1)
         k = range(2,8,2)
         for index, statistic in enumerate(statistics):
             stat = []
@@ -158,7 +139,6 @@ class task_2:
                 tmp = []
                 function = statistics_func[index]
                 for sample in samples:
-                    self.setIterations(sample)
                     tmp.append(function(algorithms_func[i]))
                 stat.append(tmp)
             plt.figure()
