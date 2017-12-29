@@ -49,6 +49,8 @@ class task_2:
         ### Define:
         # k = number of bitmasks; n = length of 1 bitmask; h = iteration parameter
         k = self.k
+        h = 0
+
         n = math.ceil(math.log2(len(self.nodes)))
         
         # Define array of M dictionaries to hold values of each iteration, h
@@ -65,7 +67,6 @@ class task_2:
                 mask = mask + utilities.bitmask.generate_bitmask(n)
             M[0][node] = int(mask, base=2)
 
-        h = 0
         N = []
         while (True):
             i = h % 2
@@ -81,6 +82,7 @@ class task_2:
             M[0] = M[1].copy()
             h += 1
             IN[h % 2] = []
+    
         return False
 
     def median(self, function):
@@ -130,7 +132,7 @@ class task_2:
         statistics = ['Median', 'Mean', 'Diameter', 'Effective_diameter']
         statistics_func = [self.median, self.mean, self.diameter, self.effective_diameter]
         samples = range(10, 160, 10)
-        k = range(2,8,2)
+        k = [2,4,8,16,32,64,128]
         for index, statistic in enumerate(statistics):
             stat = []
             print("--------------------" + statistic + "--------------------") 
