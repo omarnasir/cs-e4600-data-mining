@@ -34,13 +34,18 @@ def execute_task_2_1():
 
 def execute_task_2_2():
     print("######################################################")
-    print("\n" + "Reading Subgraph from Disk: soc-Epinions1 \n")
+    print("\n" + "Reading Subgraph from Disk: wiki-Vote \n")
     print("######################################################")
     for e in ext:
         print("\n--------- Type: " + e[1] + " ---------")
         obj = task_2_igraph.task_2()
+<<<<<<< HEAD
         obj.graph = Graph.Read_GraphMLz('D:/Project/outputs/wiki-Vote' + e[0], directed = e[2])            
         obj.task_2_2()
+=======
+        obj.graph = Graph.Read_GraphMLz('./outputs/wiki-Vote' + e[0], directed = e[2])            
+        obj.task_2_2(e[1])
+>>>>>>> 9ab5b841749b2c4313e97ef26cfda21e3e7d8d03
 
 def main():
     # execute_task_1()

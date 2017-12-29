@@ -122,14 +122,14 @@ class task_2:
         print('-> Value: ' + str(value))
         print('-> Elapsed Time: %.3f seconds.' % elapsed)
 
-    def task_2_2(self):
+    def task_2_2(self, e):
         self.nodes = self.graph.vs.indices
         algorithms = ['Sample_random_pairs', 'Sample_random_sources']
         algorithms_func = [self.random_pairs, self.random_sources]
 
         statistics = ['Median', 'Mean', 'Diameter', 'Effective_diameter']
         statistics_func = [self.median, self.mean, self.diameter, self.effective_diameter]
-        samples = range(1, 10, 1)
+        samples = range(10, 160, 10)
         k = range(2,8,2)
         for index, statistic in enumerate(statistics):
             stat = []
@@ -144,7 +144,7 @@ class task_2:
             plt.figure()
             plt.xlabel('Numbers of samples')
             plt.ylabel(statistics[index])
-            plt.title('Graph of the estimation of the ' + statistics[index] + ' for the different approximation algorithms on the Epinion_LSCC graph')
+            plt.title('Graph of the estimation of the ' + statistics[index] + ' for the different approximation algorithms on the wiki-Vote ' + e + ' graph')
             alg_0, = plt.plot(samples, stat[0], 'ro', label='Sample random pairs')
             alg_1, = plt.plot(samples, stat[1], 'bs', label='Sample random sources')
             plt.legend(handles = [alg_0, alg_1])
@@ -158,7 +158,7 @@ class task_2:
             tmp.append(self.anf())
         plt.figure()
         plt.xlabel('Value of k bitmask length')
-        plt.title('Graph of the estimation of the ANF Basic on the Epinion_LSCC graph')
+        plt.title('Graph of the estimation of the ANF Basic on the wiki-Vote ' + e + ' graph')
         alg_0, = plt.plot(k, tmp, 'ro', label='ANF Basic')
         plt.legend(handles = [alg_0])
         plt.show()
